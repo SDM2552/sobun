@@ -15,5 +15,6 @@ public interface ItemMapper {
 	@Select("select * from item")
 	List<Item> selectAll();
 
-	Item selectByItemName(String itemName);
+	@Select("select * from item where item_id=#{itemId}")
+	Item selectByItemId(Long itemId);
 }

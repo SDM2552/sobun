@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.orange.repository.ItemMapper;
+import com.orange.repository.MemberMapper;
+import com.orange.service.item.ItemDetailService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +17,8 @@ class SobunApplicationTests {
 
 	@Autowired
 	private ItemMapper itemMapper;
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	@Test
 	void contextLoads() {
@@ -29,7 +33,20 @@ class SobunApplicationTests {
 	@Test
 	@DisplayName("품목 이름으로 검색")
 	void test02() {
-		log.debug("★이름으로 검색: {}",itemMapper.selectByItemName("사과"));
+		log.debug("★이름으로 검색: {}",itemMapper.selectByItemId(1L));
+	}
+	
+	@Test
+	void test03() {
+		log.debug("첫 작동 테스트: {}",memberMapper.count());
+	}
+	@Test
+	void test04() {
+		log.debug("ID체크 테스트: {}",memberMapper.idCheck("asd"));
+	}
+	@Test
+	void test05() {
+		log.debug("로그인 체크: {}"+memberMapper.loginCheck("asd", 1234));
 	}
 
 }

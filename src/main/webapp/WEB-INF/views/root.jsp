@@ -10,6 +10,8 @@
 <body>
 	<h1>메인 페이지</h1>
 	<hr>
+	<a href="list">상품 목록</a>
+	<a href="loginForm">로그인</a>
 	
 </body>
 </html>

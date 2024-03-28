@@ -12,14 +12,13 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Item {
+public class Member {
 
-	private Long itemId;
-	@NonNull private String category;
+	private Long id;
+	@NonNull private String userId;
+	@NonNull private String password;
 	@NonNull private String name;
-	@NonNull private double price;
-	@NonNull private int quantity;
-	@NonNull private String description;
-	@NonNull private String image;
-	@NonNull private String regdate;
+	@NonNull private String email;
+	private int point;
 }
+
