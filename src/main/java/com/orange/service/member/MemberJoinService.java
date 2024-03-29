@@ -3,16 +3,16 @@ package com.orange.service.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.orange.model.Member;
 import com.orange.repository.MemberMapper;
 
 @Service
-public class LoginCheckService {
+public class MemberJoinService {
 
 	@Autowired
 	MemberMapper memberMapper;
 	
-	public int loginCheck(String userId) {
-		int result = memberMapper.idCheck(userId);
-		return result;
+	public void insertMember(Member member) {
+		memberMapper.insertMember(member);
 	}
 }

@@ -9,8 +9,7 @@
 <title>상품 목록</title>
 </head>
 <body>
-	<a href="root">메인으로</a>
-	<hr>
+<c:import url="header.jsp" />
 	<h1>상품 목록</h1>
 	<hr>
 <table>

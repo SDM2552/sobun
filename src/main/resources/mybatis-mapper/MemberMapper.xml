@@ -4,7 +4,9 @@
 <mapper namespace="com.orange.repository.MemberMapper">
 
 	<select id="selectCount" resultType="Integer">
-		select count(*) from item
+		<![CDATA[
+			select count(*) from item
+		]]>
 	</select>
 	
 	<select id="loginCheck" resultType="int">
@@ -12,6 +14,13 @@
 			select count(*) from member where user_id=#{userId} and password=#{password}
 		]]>
 	</select>
+	
+	<insert id="insertMember" parameterType="com.orange.model.Member">
+		<![CDATA[
+			insert into member (user_id, password, name, email, adress, point) 
+			values (#{userId}, #{password}, #{name}, #{email}, #{adress}, #{point})
+		]]>
+	</insert>
 	
 
 </mapper>

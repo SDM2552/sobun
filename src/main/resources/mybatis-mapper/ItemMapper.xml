@@ -12,6 +12,12 @@
 			select * from item where item_name = #{itemName}
 		]]>
 	</select>
+	<insert id="insertItem" parameterType="com.orange.model.Item">
+		<![CDATA[
+			insert into item (category, name, price, quantity, sales, description, image, regdate) 
+			values (#{category}, #{name}, #{price}, #{quantity}, #{sales}, #{description}, #{image}, now())
+		]]>
+	</insert>
 	
 
 </mapper>

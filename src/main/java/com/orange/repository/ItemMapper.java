@@ -17,4 +17,6 @@ public interface ItemMapper {
 
 	@Select("select * from item where item_id=#{itemId}")
 	Item selectByItemId(Long itemId);
+	
+	void insertItem(Item item);
 }

@@ -20,7 +20,8 @@ public class Member {
 	private String name;
 	@Column(nullable = false)
 	private String email;
-	private int point;
+	private String adress;
+	private int point = 0;
 	
 }
 

@@ -1,5 +1,7 @@
 package com.orange.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -10,7 +12,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class Item {
 
@@ -19,7 +23,8 @@ public class Item {
 	@NonNull private String name;
 	@NonNull private double price;
 	@NonNull private int quantity;
+	@NonNull private int sales;
 	@NonNull private String description;
 	@NonNull private String image;
-	@NonNull private String regdate;
+	private String regdate;
 }

@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>장바구니</title>
 </head>
 <body>
 <c:import url="header.jsp" />
-	<h1>관리자 페이지</h1>
+	<h1>장바구니</h1>
 	<hr>
 </body>
 </html>

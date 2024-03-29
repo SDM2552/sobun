@@ -1,13 +1,15 @@
 package com.orange;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.orange.model.Item;
 import com.orange.repository.ItemMapper;
 import com.orange.repository.MemberMapper;
-import com.orange.service.item.ItemDetailService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,12 +43,26 @@ class SobunApplicationTests {
 		log.debug("첫 작동 테스트: {}",memberMapper.count());
 	}
 	@Test
+//	@Transactional
+	@DisplayName("상품 등록 테스트")
+	void test06() {
+		Item item = Item.builder()
+					.category("과일")
+					.name("멜론")
+					.price(5000)
+					.quantity(30)
+					.description("맛있어요")
+					.image("아직 없음")
+					.build();
+		itemMapper.insertItem(item);
+	}
+	@Test
 	void test04() {
-		log.debug("ID체크 테스트: {}",memberMapper.idCheck("asd"));
+		System.out.println("ID로 값 가져오기 테스트: "+memberMapper.getUserInfo("asd"));
 	}
 	@Test
 	void test05() {
-		log.debug("로그인 체크: {}"+memberMapper.loginCheck("asd", 1234));
+		System.out.println("로그인 체크: "+memberMapper.loginCheck("asd", "1234"));
 	}
 
 }

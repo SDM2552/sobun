@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/">메인으로</a>
-	<hr>
+<c:import url="header.jsp" />
 	<h1>상품 정보</h1>
 	<hr>
 	<form action="#">
@@ -28,5 +27,7 @@
     </tr>
 	</table>
 	</form>
+	<button onclick="location.href='#'">장바구니</button>
+	<button onclick="location.href='#'">구매하기</button><br>
 </body>
 </html>

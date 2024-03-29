@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.orange.model.Item;
+import com.orange.model.Member;
 
 @Mapper
 public interface MemberMapper {
@@ -12,9 +13,11 @@ public interface MemberMapper {
 	@Select("select count(*) from member")
 	int count();
 	
-	@Select("select count(*) from member where user_Id=#{userId}")
-	int idCheck(String userId);
+	@Select("select * from member where user_Id=#{userId}")
+	Member getUserInfo(String userId);
 	
-	int loginCheck(@Param("userId") String userId, @Param("password") Integer password);
+	int loginCheck(@Param("userId") String userId, @Param("password") String password);
+	
+	void insertMember(Member memeber);
 
 }
