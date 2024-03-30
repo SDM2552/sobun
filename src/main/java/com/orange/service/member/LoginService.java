@@ -20,7 +20,7 @@ public class LoginService {
 		int result = memberMapper.loginCheck(userId, password);
 		boolean isLoggedIn = (result !=0);
 		if(isLoggedIn) {
-			Member member = memberMapper.getUserInfo(userId);
+			Member member = memberMapper.selectByUserId(userId);
 			if(member != null) {
 				httpSession.setAttribute("loggedInMember", member);
 				System.out.println("로그인 성공");

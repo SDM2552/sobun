@@ -26,8 +26,16 @@
         <td>${item.price}</td>
     </tr>
 	</table>
-	</form>
-	<button onclick="location.href='#'">장바구니</button>
+	수량: <input type="number" id="quantityInput" value="1" min="1"><br>
+	<button type="submit" id="addToCartBtn">장바구니</button>
 	<button onclick="location.href='#'">구매하기</button><br>
+	</form>
+
+	
+	<script>
+    document.getElementById('addToCartBtn').addEventListener('click', function() {
+       let confirmation = confirm('상품이 장바구니에 ')
+    });
+</script>
 </body>
 </html>

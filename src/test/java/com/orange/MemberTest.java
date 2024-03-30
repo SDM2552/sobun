@@ -41,6 +41,6 @@ public class MemberTest {
 				.name("쿼티")
 				.email("qwe@emai.com")
 				.build();
-		memberMapper.insertMember(memeber);
+		memberMapper.insertUser(memeber);
 	}
 }

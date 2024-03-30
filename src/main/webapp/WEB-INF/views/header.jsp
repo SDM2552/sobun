@@ -7,10 +7,7 @@
         <span>${loggedInMember.name} 님 환영합니다. <button id="logout">로그아웃</button></span>
     </c:when>
     <c:otherwise>
-        <script>
-            alert('로그인이 필요합니다');
-            window.location.href = '/loginForm'; <%-- 로그인 페이지로 이동 --%>
-        </script>
+        <button onclick="location.href='/loginForm'">로그인</button>
     </c:otherwise>
 </c:choose>
 <hr>

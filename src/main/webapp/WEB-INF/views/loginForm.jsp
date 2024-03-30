@@ -8,6 +8,8 @@
 <title>로그인</title>
 </head>
 <body>
+<c:import url="header.jsp" />
+
 	<h1>로그인</h1>
 	<hr>
 	<form action="login" method="post">

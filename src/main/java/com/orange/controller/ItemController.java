@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.orange.aop.LoginCheck;
 import com.orange.model.Item;
 import com.orange.service.item.ItemService;
 
@@ -39,6 +40,11 @@ public class ItemController {
 		model.addAttribute("item", item);
 		return "item";
 	}
+	@LoginCheck
+	@GetMapping("/buyPage")
+	public String buyForm() {
+		return "buyPage";
+	}
 	@GetMapping("/addItems")
 	public String addItems() {
 		return "addItems";
@@ -48,7 +54,7 @@ public class ItemController {
 		itemService.insertItem(item);
 		return "redirect:/addItems";
 	}
-	
+	@LoginCheck
 	@GetMapping("/cart")
 	public String cart() {
 		return "cart";

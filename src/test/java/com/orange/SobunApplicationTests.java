@@ -58,7 +58,7 @@ class SobunApplicationTests {
 	}
 	@Test
 	void test04() {
-		System.out.println("ID로 값 가져오기 테스트: "+memberMapper.getUserInfo("asd"));
+		System.out.println("ID로 값 가져오기 테스트: "+memberMapper.selectByUserId("asd"));
 	}
 	@Test
 	void test05() {

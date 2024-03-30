@@ -29,10 +29,14 @@ public class MemberController {
 		System.out.println("로그인 체크한다: "+isLoggedIn);
 		return "root";
 	}
+	@GetMapping("/loginCheck")
+	public String loginFirst() {
+		return "loginCheck";
+	}
 	@GetMapping("logout")
 	public String logout() {
 		loginService.logout();
-		return "redirect:/logoutSuccess";
+		return "logoutSuccess";
 	}
 	@GetMapping("/admin")
 	public String admin() {

@@ -13,6 +13,6 @@ public class MemberJoinService {
 	MemberMapper memberMapper;
 	
 	public void insertMember(Member member) {
-		memberMapper.insertMember(member);
+		memberMapper.insertUser(member);
 	}
 }

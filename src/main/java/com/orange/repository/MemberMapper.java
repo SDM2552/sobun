@@ -14,10 +14,10 @@ public interface MemberMapper {
 	int count();
 	
 	@Select("select * from member where user_Id=#{userId}")
-	Member getUserInfo(String userId);
+	Member selectByUserId(String userId);
 	
 	int loginCheck(@Param("userId") String userId, @Param("password") String password);
 	
-	void insertMember(Member memeber);
+	void insertUser(Member memeber);
 
 }
