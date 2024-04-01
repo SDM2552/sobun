@@ -11,7 +11,7 @@
 <c:import url="header.jsp" />
 	<h1>상품 정보</h1>
 	<hr>
-	<form action="#">
+	<form action="addToCart" method="post">
 	<table>
     <tr>
         <th class="category">카테고리</th>
@@ -26,16 +26,13 @@
         <td>${item.price}</td>
     </tr>
 	</table>
-	수량: <input type="number" id="quantityInput" value="1" min="1"><br>
+	수량: <input type="number" name="quantity" id="quantityInput" value="1" min="1"><br>
+	<input type="hidden" name="itemId" value="${item.itemId}">
 	<button type="submit" id="addToCartBtn">장바구니</button>
 	<button onclick="location.href='#'">구매하기</button><br>
 	</form>
 
 	
-	<script>
-    document.getElementById('addToCartBtn').addEventListener('click', function() {
-       let confirmation = confirm('상품이 장바구니에 ')
-    });
-</script>
+	
 </body>
 </html>

@@ -41,6 +41,12 @@ public class TestRunner implements ApplicationRunner{
 		//member
 		jdbcTemplate.execute("INSERT INTO member (user_Id, password, name, email, point) " +
 				"VALUES ('asd', 1234, '테스트01', 'test@naver.com', 100)");
+		//cart
+		jdbcTemplate.execute("INSERT INTO cart (created_time, user_id) "
+				+ "VALUES ( now(), 1)");
+		//cartItem
+		jdbcTemplate.execute("INSERT INTO cart_item (cart_id, item_id, quantity) "
+				+ "VALUES ( 1, 1, 10)");
 		
 	}
 

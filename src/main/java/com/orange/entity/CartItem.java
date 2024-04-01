@@ -13,6 +13,8 @@ public class CartItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cartItemId;
 	@Column(nullable = false)
+	private Long cartId;
+	@Column(nullable = false)
 	private Long itemId;
 	@Column(nullable = false)
 	private int quantity;

@@ -12,8 +12,9 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class CartItem {
 	
-	@NonNull private Long cartItemId;
-	@NonNull private Long itemId;
-	@NonNull private int quantity;
+	private Long cartItemId;
+	private Long cartId;
+	private Long itemId;
+	private int quantity;
 
 }
