@@ -19,6 +19,12 @@
 		]]>
 	</insert>
 	
+	<select id="findItemById" parameterType="Long" resultType="com.orange.model.Item">
+	<![CDATA[
+        SELECT * FROM item WHERE item_id = #{itemId}
+        ]]>
+    </select>
+	
 
 </mapper>
 

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CartItem {
@@ -18,4 +20,6 @@ public class CartItem {
 	private Long itemId;
 	@Column(nullable = false)
 	private int quantity;
+
+
 }

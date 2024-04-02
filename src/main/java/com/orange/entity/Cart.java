@@ -14,6 +14,6 @@ public class Cart {
 	private Long cartId;
 	@Column(nullable = false)
 	private Long userId;
-	@Column(nullable = false)
-	private String createdTime;
+	@Column(nullable = false, columnDefinition = "int default 0")
+	private int count;
 }

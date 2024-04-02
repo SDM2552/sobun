@@ -3,6 +3,7 @@ package com.orange.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.orange.model.Item;
@@ -19,4 +20,6 @@ public interface ItemMapper {
 	Item selectByItemId(Long itemId);
 	
 	void insertItem(Item item);
+	
+	Item findItemById(@Param("itemId") Long itemId);
 }

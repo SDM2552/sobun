@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.orange.model.Cart;
-import com.orange.repository.CartItemMapper;
 import com.orange.repository.CartMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +18,6 @@ public class CartTest {
 
 	@Autowired
 	CartMapper cartMapper;
-	@Autowired
-	CartItemMapper cartItemMapper;
 	
 	@Test
 	void test00() {
@@ -34,7 +31,7 @@ public class CartTest {
 	@Test
 	@DisplayName("그럼 얘는 되냐?")
 	void test03() {
-		cartItemMapper.selectByItemId(1L);
+		cartMapper.findByItemId(1L);
 	}
 	@Test
 	@DisplayName("카트 추가")
@@ -42,6 +39,7 @@ public class CartTest {
 	void test02() {
 		cartMapper.createCart(1L);
 	}
+
 	
 	
 	
