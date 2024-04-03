@@ -6,80 +6,93 @@
 	<select id="count" resultType="Integer">
 		select count(*) from cart
 	</select>
-	
+
 	<select id="findByUserId" resultType="com.orange.model.Cart">
 		<![CDATA[
 			select * from cart where user_id = #{userId}
 		]]>
 	</select>
 	
-	 <insert id="createCartItem">
+	<select id="findCartIdByUserId" resultType="Long">
+		<![CDATA[
+			select cart_id from cart where user_id = #{userId}
+		]]>
+	</select>
+
+	<insert id="createCartItem">
 	 <![CDATA[
         INSERT INTO cart_item (cart_id, item_id, quantity) VALUES (#{cartId}, #{itemId}, #{quantity})
         ]]>
-    </insert>
+	</insert>
 
-    <select id="findCartItemByCartIdAndItemId" resultType="com.orange.model.CartItem">
+	<select id="findCartItemByCartIdAndItemId"
+		resultType="com.orange.model.CartItem">
     <![CDATA[
         SELECT * FROM cart_item WHERE cart_id = #{cartId} AND item_id = #{itemId}
         ]]>
-    </select>
-    
-      <select id="findCountByCartIdAndItemId" parameterType="Map" resultType="Integer">
+	</select>
+
+	<select id="findCountByCartIdAndItemId"
+		parameterType="com.orange.model.CartItem" resultType="Integer">
       <![CDATA[
         SELECT COUNT(*) FROM cart_item WHERE cart_id = #{cartId} AND item_id = #{itemId}
         ]]>
-    </select>
+	</select>
 
-    <insert id="save" parameterType="com.orange.model.Cart">
+	<insert id="save" parameterType="com.orange.model.Cart">
     <![CDATA[
         INSERT INTO cart (user_id) VALUES (#{userId})
         ]]>
-        <selectKey keyProperty="cartId" resultType="java.lang.Long" order="AFTER">
-        SELECT LAST_INSERT_ID() AS cartId
-    </selectKey>
-    </insert>
+		<selectKey keyProperty="cartId" resultType="java.lang.Long"
+			order="AFTER">
+			SELECT LAST_INSERT_ID() AS cartId
+		</selectKey>
+	</insert>
 
-    <insert id="insertCartItem" parameterType="Map">
+	<insert id="insertCartItem" parameterType="Map">
     <![CDATA[
         INSERT INTO cart_item (cart_id, item_id, quantity) VALUES (#{cartId}, #{itemId}, #{quantity})
         ]]>
-    </insert>
+	</insert>
 
-    <update id="updateItemCount" parameterType="Map">
+	<update id="updateItemCount" parameterType="Map">
     <![CDATA[
         UPDATE cart_item SET quantity = quantity + #{quantity} WHERE cart_id = #{cartId} AND item_id = #{itemId}
         ]]>
-    </update>
+	</update>
 
-    <update id="updateCartItemCount" parameterType="Map">
+	<update id="updateCartItemCount" parameterType="Map">
     <![CDATA[
         UPDATE cart SET count = count + #{quantity} WHERE cart_id = #{cartId}
         ]]>
-    </update>
-    
-     <resultMap id="CartResultMap" type="com.orange.model.Cart">
-    <id property="cartId" column="cart_id" />
-    <result property="userId" column="user_id" />
-    <result property="count" column="count" />
-    <collection property="cartItems" ofType="com.orange.model.CartItem" resultMap="CartItemResultMap" />
-</resultMap>
+	</update>
 
-<resultMap id="CartItemResultMap" type="com.orange.model.CartItem">
-    <id property="cartItemId" column="cart_item_id" />
-    <result property="cartId" column="cart_id" />
-    <result property="itemId" column="item_id" />
-    <result property="quantity" column="quantity" />
-</resultMap>
+	<resultMap id="CartResultMap" type="com.orange.model.Cart">
+		<id property="cartId" column="cart_id" />
+		<result property="userId" column="user_id" />
+		<result property="count" column="count" />
+		<collection property="cartItems"
+			ofType="com.orange.model.CartItem" resultMap="CartItemResultMap" />
+	</resultMap>
+	
+	<resultMap id="CartItemResultMap" type="com.orange.model.CartItem">
+    	<id property="cartItemId" column="cart_item_id" />
+    	<result property="cartId" column="cart_id" />
+    	<result property="itemId" column="item_id" />
+    	<result property="quantity" column="quantity" />
+	</resultMap>
+	
 
-<select id="getCartAndItems" resultMap="CartResultMap">
+	<select id="getCartAndItems" resultMap="CartResultMap">
     <![CDATA[
-        SELECT c.cart_id, c.user_id, c.count, ci.cart_item_id, ci.item_id, ci.quantity
+        SELECT ci.cart_id, ci.item_id, ci.quantity 
         FROM cart c
-        JOIN cart_item ci ON c.cart_id = ci.cart_id
-        WHERE c.user_id = #{userId}
+		JOIN cart_item ci ON c.cart_id = ci.cart_id
+		WHERE c.user_id = #{userId}
     ]]>
-</select>
+	</select>
+	
+	
 
 </mapper>
 

@@ -1,5 +1,7 @@
 package com.orange.model;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,10 +23,11 @@ public class Item {
 	private Long itemId;
 	@NonNull private String category;
 	@NonNull private String name;
-	@NonNull private double price;
+	@NonNull private BigDecimal price;
 	@NonNull private int quantity;
 	@NonNull private int sales;
 	@NonNull private String description;
 	@NonNull private String image;
 	private String regdate;
+	private int cartItemQuantity;
 }

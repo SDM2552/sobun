@@ -22,6 +22,7 @@ public class Cart {
 	private Long userId;
 	private int count;
 	private List<CartItem> cartItems;
+	private Item item;
 
 	private Long itemId;
 	private Long cartItemId;
@@ -33,17 +34,17 @@ public class Cart {
     public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
     }
-
 	public Cart(Long userId) {
 		this.userId = userId;
 	}
-
+	public void setItem(Item item) {
+        this.item = item;
+    }
 	public Cart(Long cartId, Long userId, int count) {
 		this.cartId = cartId;
 		this.userId = userId;
 		this.count = count;
 	}
-
 	public Cart(Long cartId, Long userId, int count, Long itemId, Long cartItemId, Integer quantity) {
 		this.cartId = cartId;
 		this.userId = userId;

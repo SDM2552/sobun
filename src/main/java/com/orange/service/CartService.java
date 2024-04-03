@@ -53,7 +53,7 @@ public class CartService {
 	        System.out.println("카트아이템 체크: "+cartItem.toString());
 	        
 	        // 해당 상품이 장바구니에 이미 존재하는지 확인
-	        Integer existingItemCount = cartMapper.findCountByCartIdAndItemId(cartId, selectedItemId);
+	        Integer existingItemCount = cartMapper.findCountByCartIdAndItemId(cartItem);
 	        
 	        // 상품이 장바구니에 존재하지 않는다면 카트상품 생성 후 추가
 	        if (existingItemCount == null || existingItemCount == 0) {
@@ -66,11 +66,19 @@ public class CartService {
 	        
 	        // 카트 상품 총 개수 증가
 	        cartMapper.updateCartItemCount(cartId, quantity);
+	        System.out.println("add카트 서비스 완료");
 	    }
 	 
-	 public List<Cart> getCartAndItems(Long userId) {
-	        // 해당 userId에 대한 장바구니 정보를 가져옴
-	        return cartMapper.getCartAndItems(userId);
-	    }
+	 public List<Item> getCartAndItems(Long userId ) {
+		 //해당 유저의 카트ID 가져오기
+		 Long cartId = cartMapper.findCartIdByUserId(userId);
+		// 해당 카트에 담긴 아이템 정보와 수량 가져오기
+	        List<Item> itemsInCart = itemMapper.findItemsByCartId(cartId);
+	        System.out.println("아이템 리스트: "+itemsInCart);
+	        return itemsInCart;
+		 
+		 
+		}
+
 	 
 }

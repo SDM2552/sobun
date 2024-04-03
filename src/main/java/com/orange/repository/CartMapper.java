@@ -16,6 +16,8 @@ public interface CartMapper {
 	int count();
 
 	Cart findByUserId(Long userId);
+	
+	Long findCartIdByUserId(Long userId);
 
 	@Insert("insert into cart (user_id) values(#{userId});")
 	void createCart(Long userId);
@@ -30,7 +32,7 @@ public interface CartMapper {
 	@Select("select * from cart_item where item_id=#{itemId}")
 	CartItem findByItemId(Long itemId);
 
-	Integer findCountByCartIdAndItemId(@Param("cartId") Long cartId, @Param("itemId") Long itemId);
+	Integer findCountByCartIdAndItemId(CartItem cartItem);
 
 	void save(Cart cart);
 
@@ -40,5 +42,5 @@ public interface CartMapper {
 
 	void updateCartItemCount(@Param("cartId") Long cartId, @Param("quantity") int quantity);
 	
-	List<Cart> getCartAndItems(@Param("userId") Long userId);
+	List<Cart> getCartAndItems(Long userId);
 }
