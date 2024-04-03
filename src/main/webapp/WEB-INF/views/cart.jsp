@@ -38,6 +38,7 @@
     총 수량: <span id="totalQuantity">0</span><br>
     총 금액: <span id="totalPrice">0</span>
 </div>
+<button>선택한 상품 구매하기</button>
 
 <script>
     // 각 아이템의 수량과 가격을 가져와서 총 수량과 총 금액을 계산하는 함수
