@@ -76,9 +76,11 @@ public class CartService {
 	        List<Item> itemsInCart = itemMapper.findItemsByCartId(cartId);
 	        System.out.println("아이템 리스트: "+itemsInCart);
 	        return itemsInCart;
-		 
-		 
 		}
+	 
+	 public void deleteCartItem(Long itemId, Long userId) {
+		 cartMapper.deleteItemInCart(itemId, userId);
+	 }
 
 	 
 }

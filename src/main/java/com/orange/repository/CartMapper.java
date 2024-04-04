@@ -43,4 +43,6 @@ public interface CartMapper {
 	void updateCartItemCount(@Param("cartId") Long cartId, @Param("quantity") int quantity);
 	
 	List<Cart> getCartAndItems(Long userId);
+	
+	void deleteItemInCart(Long itemId, Long userId);
 }

@@ -29,6 +29,7 @@
             <td>${item.price}</td>
             <td>${item.cartItemQuantity}</td>
             <td><input type="checkbox" class="itemCheckbox" data-price="${item.price}" data-quantity="${item.cartItemQuantity}" checked></td>
+ 			<td><button class="removeItemBtn" data-itemId="${item.itemId}" data-userId="${userId}">제거</button></td>
         </tr>
         </c:forEach>
     </tbody>
@@ -38,7 +39,8 @@
     총 수량: <span id="totalQuantity">0</span><br>
     총 금액: <span id="totalPrice">0</span>
 </div>
-<button>선택한 상품 구매하기</button>
+<button id="purchaseBtn">선택한 상품 구매하기</button>
+
 
 <script>
     // 각 아이템의 수량과 가격을 가져와서 총 수량과 총 금액을 계산하는 함수
@@ -70,6 +72,68 @@
             calculateTotal();
         });
     });
+ // 페이지 로드 시 실행
+    window.onload = function() {
+    // 제거 버튼 클릭 이벤트 처리
+    const removeButtons = document.querySelectorAll('.removeItemBtn');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemId = button.getAttribute('data-itemId');
+            const userId = button.getAttribute('data-userId');
+            deleteCartItem(userId, itemId);
+        });
+    });
+
+    // 총 수량과 총 금액 계산
+    calculateTotal();
+};
+
+    // 상품 제거 함수
+    function deleteCartItem(userId, itemId) {
+        // Ajax 요청
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/deleteCartItem');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // 제거 성공 시 페이지 새로고침
+                window.location.reload();
+                // 총 수량과 총 금액 재계산
+                calculateTotal();
+            } else {
+                // 오류 처리
+                console.error('상품 제거 실패');
+            }
+        };
+        xhr.send(JSON.stringify({ userId: userId, itemId: itemId }));
+    }
+ // 선택한 상품 구매 함수
+    function purchaseItems() {
+        const selectedItems = [];
+        const items = document.querySelectorAll("#cartItems tr");
+        items.forEach(function(itemRow) {
+            const isChecked = itemRow.querySelector(".itemCheckbox").checked;
+            if (isChecked) {
+                const itemId = itemRow.querySelector(".removeItemBtn").getAttribute('data-itemId');
+                selectedItems.push(itemId);
+            }
+        });
+        
+        // Ajax 요청으로 선택한 상품 정보를 서버로 전송
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/purchaseItems');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // 성공 시 처리
+                console.log('구매 성공');
+            } else {
+                // 오류 처리
+                console.error('구매 실패');
+            }
+        };
+        xhr.send(JSON.stringify(selectedItems));
+    }
 </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.orange.model.Item;
 import com.orange.repository.ItemMapper;
 import com.orange.repository.MemberMapper;
+import com.orange.repository.OrderMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +22,14 @@ class SobunApplicationTests {
 	private ItemMapper itemMapper;
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private OrderMapper orderMapper;
+	
+	@Test
+	@DisplayName("order 테이블 출력 테스트")
+	void test10() {
+		orderMapper.count();
+	}
 	
 	@Test
 	void contextLoads() {

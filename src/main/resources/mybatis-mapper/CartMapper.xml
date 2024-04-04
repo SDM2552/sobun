@@ -92,6 +92,13 @@
     ]]>
 	</select>
 	
+	<delete id="deleteItemInCart" parameterType="Long">
+		<![CDATA[
+ 		 delete from cart_item 
+ 		 where item_id=#{itemId} and cart_id = (select cart_id from cart where user_id = #{userId})
+    ]]>
+	</delete>
+	
 	
 
 </mapper>
