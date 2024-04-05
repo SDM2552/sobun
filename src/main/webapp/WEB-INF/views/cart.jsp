@@ -39,7 +39,7 @@
     총 수량: <span id="totalQuantity">0</span><br>
     총 금액: <span id="totalPrice">0</span>
 </div>
-<button id="purchaseBtn">선택한 상품 구매하기</button>
+<button id="purchaseBtn" onclick="purchaseItems()">선택한 상품 구매하기</button>
 
 
 <script>
@@ -107,33 +107,51 @@
         };
         xhr.send(JSON.stringify({ userId: userId, itemId: itemId }));
     }
+ // 현재 페이지의 URL에서 userId를 가져오기
+    const userId = window.location.pathname.split('/')[2];
  // 선택한 상품 구매 함수
     function purchaseItems() {
-        const selectedItems = [];
-        const items = document.querySelectorAll("#cartItems tr");
-        items.forEach(function(itemRow) {
-            const isChecked = itemRow.querySelector(".itemCheckbox").checked;
-            if (isChecked) {
-                const itemId = itemRow.querySelector(".removeItemBtn").getAttribute('data-itemId');
-                selectedItems.push(itemId);
-            }
-        });
-        
-        // Ajax 요청으로 선택한 상품 정보를 서버로 전송
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/purchaseItems');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // 성공 시 처리
-                console.log('구매 성공');
-            } else {
-                // 오류 처리
-                console.error('구매 실패');
-            }
-        };
-        xhr.send(JSON.stringify(selectedItems));
-    }
+    const selectedItems = [];
+    const items = document.querySelectorAll("#cartItems tr");
+    items.forEach(function(itemRow) {
+        const isChecked = itemRow.querySelector(".itemCheckbox").checked;
+        if (isChecked) {
+            const itemId = itemRow.querySelector(".removeItemBtn").getAttribute('data-itemId');
+            const itemName = itemRow.querySelector("td:nth-child(1)").textContent;
+            const itemImage = itemRow.querySelector("td:nth-child(2) img").src;
+            const itemPrice = parseFloat(itemRow.querySelector("td:nth-child(3)").textContent);
+            const itemCount = parseInt(itemRow.querySelector("td:nth-child(4)").textContent);
+            selectedItems.push({
+            	userId: userId,
+                itemId: itemId,
+                itemName: itemName,
+                image: itemImage,
+                itemPrice: itemPrice,
+                itemCount: itemCount
+            });
+        }
+    });
+
+
+
+    // Ajax 요청으로 선택한 상품 정보를 서버로 전송
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/user/' + userId + '/order');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // 성공 시 처리
+            console.log('구매 성공');
+            window.location.href = '/order';
+            
+        } else {
+            // 오류 처리
+            console.error('구매 실패');
+        }
+    };
+    xhr.send(JSON.stringify(selectedItems));
+}
+
 </script>
 </body>
 </html>
