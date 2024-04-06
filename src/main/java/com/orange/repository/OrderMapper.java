@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.orange.model.OrderInfo;
 import com.orange.model.OrderItem;
+import com.orange.model.OrderSummary;
 
 
 @Mapper
@@ -20,4 +21,6 @@ public interface OrderMapper {
 	void saveOrderItems(List<OrderItem> selectedItems);
 	
 	 List<OrderItem> getOrderItemsByOrderId(Long orderId);
+	 
+	 List<OrderSummary> getOrderSummary(Long userId);
 }

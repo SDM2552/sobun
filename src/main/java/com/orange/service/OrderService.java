@@ -46,5 +46,9 @@ public class OrderService {
             System.out.println("저장된 OrderItem: " + item);
         }
 	}
+	
+//	public List<OrderItem> showOrderList(){
+//		
+//	}
 
 }

@@ -28,7 +28,7 @@
 	</table>
 	수량: <input type="number" name="quantity" id="quantityInput" value="1" min="1"><br>
 	<input type="hidden" name="itemId" value="${item.itemId}">
-	<button type="submit" id="addToCartBtn">장바구니</button>
+	<button type="submit" id="addToCartBtn">장바구니에 추가</button>
 	<button onclick="location.href='#'">구매하기</button><br>
 	</form>
 
