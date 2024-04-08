@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.orange.aop.LoginCheck;
 import com.orange.model.Item;
@@ -50,8 +51,8 @@ public class ItemController {
 		return "addItems";
 	}
 	@PostMapping("/add")
-	public String addItems2(Item item) {
-		itemService.insertItem(item);
+	public String addItems2(Item item, MultipartFile imgFile) {
+		itemService.insertItem(item, imgFile);
 		return "redirect:/addItems";
 	}
 	@LoginCheck

@@ -14,8 +14,8 @@
 	</select>
 	<insert id="insertItem" parameterType="com.orange.model.Item">
 		<![CDATA[
-			insert into item (category, name, price, quantity, sales, description, image, regdate) 
-			values (#{category}, #{name}, #{price}, #{quantity}, #{sales}, #{description}, #{image}, now())
+			insert into item (category, name, price, quantity, sales, description, image, image_path, regdate) 
+			values (#{category}, #{name}, #{price}, #{quantity}, #{sales}, #{description}, #{image}, #{imagePath}, now())
 		]]>
 	</insert>
 	

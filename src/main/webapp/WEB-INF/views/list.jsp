@@ -25,7 +25,7 @@
             <td>${item.category}</td>
             <td><a href="item?itemId=${item.itemId}">${item.name}</a>
             </td>
-            <td>${item.image}</td>
+            <td><img src="${item.imagePath}" alt="${item.image}" width="100" height="100"></td>
             <td>${item.price}</td>
         </tr>
 </c:forEach>

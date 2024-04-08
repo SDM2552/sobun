@@ -25,7 +25,7 @@
     <c:forEach var="item" items="${itemsInCart}">
         <tr>
             <td>${item.name}</td>
-            <td><img src="${item.image}" width="100" height="100" alt="상품 이미지"></td>
+            <td><img src="${item.imagePath}" alt="${item.image}" width="100" height="100"></td>
             <td>${item.price}</td>
             <td>${item.cartItemQuantity}</td>
             <td><input type="checkbox" class="itemCheckbox" data-price="${item.price}" data-quantity="${item.cartItemQuantity}" checked></td>

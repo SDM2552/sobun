@@ -23,6 +23,7 @@ public class Item {
 	private int sales;
 	private String description;
 	private String image;
+	private String imagePath;
 	private String regdate;
 	
 }

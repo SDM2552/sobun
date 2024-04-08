@@ -1,5 +1,7 @@
 package com.orange.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +27,11 @@ public class Item {
 	@NonNull private int quantity;
 	@NonNull private int sales;
 	@NonNull private String description;
-	@NonNull private String image;
+	@NonNull String image;
+	private String imagePath;
 	private String regdate;
 	private int cartItemQuantity;
+	
+
+
 }

@@ -22,7 +22,7 @@
     <tr>
         <td>${item.category}</td>
         <td>${item.name} </td>
-        <td>${item.image}</td>
+        <td><img src="${item.imagePath}" alt="${item.image}" width="200" height="200"></td>
         <td>${item.price}</td>
     </tr>
 	</table>

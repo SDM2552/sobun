@@ -11,7 +11,7 @@
 <c:import url="header.jsp" />
 	<h1>상품 등록</h1>
 	<hr>
-		<form action="add" method="post">
+		<form action="add" method="post" enctype="multipart/form-data">
 	<label for="category">카테고리:</label>
 <select name="category" id="category">
     <option value="야채">야채</option>
@@ -26,7 +26,7 @@
 	가격: <input type="text" name="price" placeholder="가격 입력"><br>
 	수량: <input type="text" name="quantity" placeholder="수량 입력"><br>
 	설명: <input type="text" name="description" placeholder="상품 설명(선택사항)"><br>
-	이미지: <input type="text" name="image" placeholder="상품 이미지(선택사항)"><br>
+	이미지: <input type="file" id="imgFile"name="imgFile" placeholder="상품 이미지(선택사항)"><br>
 	<button type="submit">등록</button>
 	</form>
 </body>

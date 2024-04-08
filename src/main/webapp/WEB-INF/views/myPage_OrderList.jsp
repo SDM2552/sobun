@@ -26,8 +26,8 @@
                 <tr>
                     <td>${order.orderId}</td>
                     <td>${order.createDate}</td>
-                    <td>${order.totalItemCount}</td>
-                    <td>${order.totalAmount}</td>
+                    <td>${order.totalItemCount} 개 </td>
+                    <td>${order.totalAmount} 원</td>
                 </tr>
             </c:forEach>
         </tbody>

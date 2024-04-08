@@ -16,8 +16,10 @@
 	<a href="cart">장바구니</a><br>
 	<a href="buyPage">구매하기</a><br>
 	<a href="loginForm">로그인</a><br>
+	<a href="MyPage/orderList">주문 확인</a><br>
 	<a href="signUp">회원가입</a><br>
 	<a href="admin">관리자 페이지</a><br>
+
 	
 </body>
 </html>
